@@ -36,6 +36,7 @@ class SubjectiveGoal(OrganizationModelMixin):
             ),
         ]
 
+    name = models.CharField(max_length=255)
     employee = models.ForeignKey(
         "employees.Employee",
         on_delete=models.CASCADE,
@@ -62,3 +63,6 @@ class SubjectiveGoal(OrganizationModelMixin):
     )
     start_date = models.DateTimeField(_("Goal Start Date"))
     end_date = models.DateTimeField(_("Goal End Date"))
+
+    def __str__(self):
+        return f"{self.employee} Goal {self.name}"
